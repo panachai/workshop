@@ -34,20 +34,4 @@ angular.module('workshop', ['ionic'])
     })
     $urlRouterProvider.otherwise('/about'); //กำหนดหน้าแรก
   })
-  .controller('aboutController', function ($scope, $state) {
-    console.log('aboutController Start...');
 
-    $scope.btnList = function () {
-      console.log('btnList pressed.');
-      $state.go('list');
-    }
-  })
-  .controller('listController', function ($scope, $state) {
-    console.log('listController Start...');
-    $scope.myName = 'NoraphatC';
-
-    $scope.btnAbout = function () {
-      console.log('btnAbout pressed.');
-      $state.go('about');
-    }
-  })
