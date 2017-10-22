@@ -5,20 +5,49 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('workshop', ['ionic'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+  .run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
+      if (window.cordova && window.cordova.plugins.Keyboard) {
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 
-      // Don't remove this line unless you know what you are doing. It stops the viewport
-      // from snapping when text inputs are focused. Ionic handles this internally for
-      // a much nicer keyboard experience.
-      cordova.plugins.Keyboard.disableScroll(true);
+        // Don't remove this line unless you know what you are doing. It stops the viewport
+        // from snapping when text inputs are focused. Ionic handles this internally for
+        // a much nicer keyboard experience.
+        cordova.plugins.Keyboard.disableScroll(true);
+      }
+      if (window.StatusBar) {
+        StatusBar.styleDefault();
+      }
+    });
+  })
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider.state('about', {
+      url: '/about',
+      templateUrl: 'template/about.html',
+      controller: 'aboutController'
+    }).state('list', {
+      url: '/list',
+      templateUrl: 'template/list.html',
+      controller: 'listController'
+    })
+    $urlRouterProvider.otherwise('/about'); //กำหนดหน้าแรก
+  })
+  .controller('aboutController', function ($scope, $state) {
+    console.log('aboutController Start...');
+
+    $scope.btnList = function () {
+      console.log('btnList pressed.');
+      $state.go('list');
     }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
+  })
+  .controller('listController', function ($scope, $state) {
+    console.log('listController Start...');
+    $scope.myName = 'NoraphatC';
+
+    $scope.btnAbout = function () {
+      console.log('btnAbout pressed.');
+      $state.go('about');
     }
-  });
-})
+  })
