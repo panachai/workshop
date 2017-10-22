@@ -27,11 +27,17 @@ angular.module('workshop', ['ionic'])
       url: '/about',
       templateUrl: 'template/about.html',
       controller: 'aboutController'
-    }).state('list', {
+    })
+      .state('list', {
       url: '/list',
       templateUrl: 'template/list.html',
       controller: 'listController'
     })
-    $urlRouterProvider.otherwise('/about'); //กำหนดหน้าแรก
+      .state('uipage',{
+        url:'/uipage',
+        templateUrl:'template/uipage.html'
+      })
+      
+    $urlRouterProvider.otherwise('/uipage'); //กำหนดหน้าแรก
   })
 
