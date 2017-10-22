@@ -24,20 +24,24 @@ angular.module('workshop', ['ionic'])
   })
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('about', {
-      url: '/about',
-      templateUrl: 'template/about.html',
-      controller: 'aboutController'
-    })
-      .state('list', {
-      url: '/list',
-      templateUrl: 'template/list.html',
-      controller: 'listController'
-    })
-      .state('uipage',{
-        url:'/uipage',
-        templateUrl:'template/uipage.html'
+        url: '/about',
+        templateUrl: 'template/about.html',
+        controller: 'aboutController'
       })
-      
-    $urlRouterProvider.otherwise('/uipage'); //กำหนดหน้าแรก
+      .state('list', {
+        url: '/list',
+        templateUrl: 'template/list.html',
+        controller: 'listController'
+      })
+      .state('uipage', {
+        url: '/uipage',
+        templateUrl: 'template/uipage.html'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'template/login.html',
+        controller: 'loginController'
+      })
+    $urlRouterProvider.otherwise('/login'); //กำหนดหน้าแรก
   })
 
